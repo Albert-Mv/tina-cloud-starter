@@ -27,7 +27,7 @@ const config = defineConfig({
   },
   build: {
     publicFolder: "public", // The public asset folder for your framework
-    outputFolder: "admin", // within the public folder
+    outputFolder: "foo/admin", // within the public folder
   },
   schema: {
     collections: [
@@ -38,7 +38,7 @@ const config = defineConfig({
         format: "mdx",
         ui: {
           router: ({ document }) => {
-            return `/posts/${document._sys.filename}`;
+            return `/foo/posts/${document._sys.filename}`;
           },
         },
         fields: [
@@ -329,10 +329,10 @@ const config = defineConfig({
         ui: {
           router: ({ document }) => {
             if (document._sys.filename === "home") {
-              return `/`;
+              return `/foo`;
             }
             if (document._sys.filename === "about") {
-              return `/about`;
+              return `/foo/about`;
             }
             return undefined;
           },
